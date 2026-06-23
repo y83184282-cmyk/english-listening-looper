@@ -1,0 +1,405 @@
+﻿.ell-root {
+  --ell-bg: #101418;
+  --ell-panel: #171d22;
+  --ell-panel-2: #20272d;
+  --ell-text: #f4f7f8;
+  --ell-muted: #9aa7af;
+  --ell-border: #34414a;
+  --ell-accent: #35c28f;
+  --ell-accent-2: #f4b942;
+  --ell-danger: #ff6b6b;
+  --ell-shadow: rgba(0, 0, 0, 0.35);
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  z-index: 2147483647;
+  width: min(760px, calc(100vw - 28px));
+  transform: translateX(-50%);
+  color: var(--ell-text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.ell-root,
+.ell-root * {
+  box-sizing: border-box;
+}
+
+.ell-root:not(.is-minimized) {
+  min-width: 340px;
+  min-height: 260px;
+  max-width: calc(100vw - 28px);
+  max-height: calc(100vh - 28px);
+  overflow: auto;
+  resize: both;
+}
+
+.ell-panel {
+  display: grid;
+  min-height: 100%;
+  gap: 10px;
+  padding: 12px;
+  background: var(--ell-bg);
+  border: 1px solid var(--ell-border);
+  border-radius: 8px;
+  box-shadow: 0 18px 42px var(--ell-shadow);
+}
+
+.ell-topbar,
+.ell-controls,
+.ell-node-actions,
+.ell-shortcuts-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ell-topbar {
+  justify-content: space-between;
+}
+
+.ell-title {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ell-text);
+  font-size: 13px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ell-status {
+  flex: 0 0 auto;
+  color: var(--ell-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.ell-progress {
+  position: relative;
+  height: 28px;
+  cursor: pointer;
+}
+
+.ell-track {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  left: 0;
+  height: 5px;
+  overflow: hidden;
+  background: var(--ell-panel-2);
+  border-radius: 999px;
+}
+
+.ell-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--ell-accent);
+}
+
+.ell-marker {
+  position: absolute;
+  top: 5px;
+  width: 7px;
+  height: 19px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 999px;
+  background: var(--ell-accent-2);
+  transform: translateX(-50%);
+}
+
+.ell-marker.is-active {
+  width: 10px;
+  background: var(--ell-accent);
+}
+
+.ell-controls {
+  flex-wrap: wrap;
+}
+
+.ell-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 32px;
+  padding: 0 10px;
+  color: var(--ell-text);
+  font: inherit;
+  font-weight: 650;
+  background: var(--ell-panel);
+  border: 1px solid var(--ell-border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ell-button:hover {
+  background: var(--ell-panel-2);
+}
+
+.ell-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.ell-button.is-primary {
+  color: #062017;
+  background: var(--ell-accent);
+  border-color: var(--ell-accent);
+}
+
+.ell-button.is-danger {
+  color: #fff;
+  background: #462025;
+  border-color: #7b343b;
+}
+
+.ell-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 9px;
+  color: var(--ell-muted);
+  background: var(--ell-panel);
+  border: 1px solid var(--ell-border);
+  border-radius: 6px;
+  user-select: none;
+}
+
+.ell-toggle input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: var(--ell-accent);
+}
+.ell-shortcuts {
+  display: grid;
+  gap: 8px;
+  padding: 9px;
+  background: var(--ell-panel);
+  border: 1px solid var(--ell-border);
+  border-radius: 6px;
+}
+
+.ell-shortcuts-head {
+  justify-content: space-between;
+}
+
+.ell-shortcuts-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.ell-shortcuts.is-collapsed .ell-shortcut-grid,
+.ell-shortcuts.is-collapsed .ell-shortcut-note {
+  display: none;
+}
+
+.ell-shortcuts-title {
+  color: var(--ell-text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ell-shortcut-toggle,
+.ell-shortcut-reset {
+  height: 24px;
+  padding: 0 8px;
+  color: var(--ell-muted);
+  font: inherit;
+  font-size: 12px;
+  background: transparent;
+  border: 1px solid var(--ell-border);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ell-shortcut-toggle:hover,
+.ell-shortcut-reset:hover {
+  color: var(--ell-text);
+  background: var(--ell-panel-2);
+}
+
+.ell-shortcut-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.ell-shortcut-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(86px, auto);
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ell-shortcut-name {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ell-muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ell-button.ell-shortcut-button {
+  min-width: 86px;
+  height: 28px;
+  padding: 0 7px;
+  color: var(--ell-text);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ell-button.ell-shortcut-button.is-capturing {
+  color: #062017;
+  background: var(--ell-accent-2);
+  border-color: var(--ell-accent-2);
+}
+
+.ell-shortcut-note {
+  color: var(--ell-muted);
+  font-size: 12px;
+}
+
+
+.ell-node-list {
+  display: grid;
+  max-height: 162px;
+  overflow: auto;
+  border: 1px solid var(--ell-border);
+  border-radius: 6px;
+}
+
+.ell-node {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 4px 7px;
+  color: var(--ell-text);
+  background: var(--ell-panel);
+  border: 0;
+  border-bottom: 1px solid var(--ell-border);
+  cursor: pointer;
+  text-align: left;
+}
+
+.ell-node:last-child {
+  border-bottom: 0;
+}
+
+.ell-node.is-active {
+  background: #173328;
+}
+
+.ell-node-time {
+  color: var(--ell-accent);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.ell-node-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ell-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  color: var(--ell-danger);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ell-icon-button:hover {
+  background: rgba(255, 107, 107, 0.14);
+  border-color: rgba(255, 107, 107, 0.35);
+}
+
+.ell-empty,
+.ell-help {
+  color: var(--ell-muted);
+}
+
+.ell-help {
+  font-size: 12px;
+}
+
+.ell-empty {
+  padding: 10px;
+  text-align: center;
+}
+
+.ell-root.is-minimized {
+  right: 14px;
+  left: auto;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible;
+  resize: none;
+  transform: none;
+}
+
+.ell-root.is-minimized .ell-panel {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.ell-root.is-minimized .ell-topbar,
+.ell-root.is-minimized .ell-progress,
+.ell-root.is-minimized .ell-node-list,
+.ell-root.is-minimized .ell-shortcuts,
+.ell-root.is-minimized .ell-help,
+.ell-root.is-minimized .ell-controls > :not(.ell-minimize-button) {
+  display: none;
+}
+
+.ell-root.is-minimized .ell-minimize-button {
+  min-width: 54px;
+}
+
+@media (max-width: 560px) {
+  .ell-root {
+    bottom: 8px;
+    width: calc(100vw - 12px);
+  }
+
+  .ell-root:not(.is-minimized) {
+    min-width: 300px;
+    max-width: calc(100vw - 12px);
+  }
+
+  .ell-panel {
+    padding: 9px;
+  }
+
+  .ell-node {
+    grid-template-columns: 66px minmax(0, 1fr) auto;
+  }
+
+  .ell-shortcut-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ell-help {
+    display: none;
+  }
+}
+
+
+
+
